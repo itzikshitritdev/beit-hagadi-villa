@@ -79,41 +79,59 @@ export default function HomePage() {
         <span className="hidden sm:inline">בדיקת זמינות</span>
       </a>
 
-      <section className="relative min-h-[calc(100svh-64px)] overflow-hidden bg-olive-dark text-white">
+      <section className="relative min-h-[760px] overflow-hidden bg-olive-dark text-white sm:min-h-[calc(100svh-64px)]">
+        <style>{`
+          @keyframes homeHeroDrift {
+            from { transform: scale(1.08) translate3d(0, 0, 0); }
+            to { transform: scale(1.15) translate3d(-1.2%, 0.8%, 0); }
+          }
+
+          @media (prefers-reduced-motion: no-preference) {
+            .home-hero-image {
+              animation: homeHeroDrift 22s ease-out infinite alternate;
+            }
+          }
+        `}</style>
         <Image
           src={heroPhotos.home}
           alt="חופשה משפחתית רגועה באחוזה במושב"
           fill
           priority
-          className="scale-105 object-cover"
+          className="home-hero-image scale-[1.08] object-cover brightness-[0.9] contrast-[1.06] saturate-[1.16] sepia-[0.08]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(38,49,31,0.94),rgba(38,49,31,0.64)_38%,rgba(38,49,31,0.2)),linear-gradient(0deg,rgba(38,49,31,0.68),rgba(38,49,31,0.08)_55%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-linen to-transparent" />
+        <div className="absolute inset-0 bg-[#b68145]/18 mix-blend-soft-light" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_28%,rgba(247,241,230,0.16),transparent_34%),linear-gradient(90deg,rgba(22,29,18,0.98),rgba(38,49,31,0.86)_32%,rgba(38,49,31,0.42)_62%,rgba(38,49,31,0.14)),linear-gradient(0deg,rgba(22,29,18,0.78),rgba(38,49,31,0.08)_58%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-linen via-linen/55 to-transparent" />
 
-        <div className="container-page relative z-10 flex min-h-[calc(100svh-64px)] items-end py-10 sm:py-14 md:py-18">
-          <div className="max-w-4xl pb-8 md:pb-14">
+        <div className="container-page relative z-10 flex min-h-[760px] items-end py-6 sm:min-h-[calc(100svh-64px)] sm:py-9 md:py-10">
+          <div className="max-w-4xl rounded-[28px] border border-white/14 bg-olive-dark/24 p-5 pb-6 shadow-[0_28px_90px_rgba(0,0,0,0.26)] backdrop-blur-[10px] sm:p-7 md:mb-8 md:p-8 lg:mb-12">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/12 px-4 py-2 text-sm font-bold text-cream shadow-[0_16px_40px_rgba(0,0,0,0.18)] backdrop-blur-md">
               <MapPin className="h-4 w-4" aria-hidden="true" />
               מושב בית הגדי, ליד נתיבות
             </div>
-            <h1 className="mt-6 max-w-5xl text-5xl font-black leading-[1.03] text-white sm:text-6xl lg:text-7xl xl:text-8xl">
+            <h1 className="mt-6 max-w-5xl text-5xl font-black leading-[1.02] text-white drop-shadow-[0_8px_28px_rgba(0,0,0,0.28)] sm:text-6xl lg:text-7xl xl:text-8xl">
               וילה גדולה למשפחות, שבתות וחופשות באמצע השבוע
             </h1>
-            <p className="mt-6 max-w-3xl text-xl leading-9 text-white/86 sm:text-2xl sm:leading-10">
+            <p className="mt-6 max-w-3xl text-lg leading-9 text-white/88 sm:text-2xl sm:leading-10">
               עד 40 מקומות לינה, בית כנסת קרוב, חצר גדולה, בריכה מחוממת
               ואווירה שקטה של מושב בדרום. מקום שבו הילדים רצים בחוץ והמבוגרים
               סוף סוף יושבים רגע בנחת.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a href={whatsappHref} target="_blank" rel="noreferrer" className={whatsappButtonClass}>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className={`${whatsappButtonClass} min-h-16 rounded-[22px] px-8 text-lg shadow-[0_22px_58px_rgba(31,143,77,0.48)] sm:px-9`}
+              >
                 <MessageCircle className="h-6 w-6" aria-hidden="true" />
                 בדיקת זמינות בוואטסאפ
               </a>
               <Link
                 href="/gallery"
-                className="inline-flex min-h-14 items-center justify-center rounded-2xl border border-white/28 bg-white/12 px-7 py-4 text-base font-black text-white shadow-[0_18px_42px_rgba(0,0,0,0.16)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-white/20"
+                className="inline-flex min-h-16 items-center justify-center rounded-[22px] border border-white/30 bg-white/14 px-8 py-4 text-lg font-black text-white shadow-[0_20px_54px_rgba(0,0,0,0.22)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-white/24 sm:px-9"
               >
                 לראות את האווירה
               </Link>
